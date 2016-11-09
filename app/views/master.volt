@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Phalcon PHP Framework</title>
 </head>
 <body>
 {% block content %}{% endblock %}

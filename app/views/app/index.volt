@@ -1,3 +1,4 @@
+{% extends "master.volt" %}
 {% block content %}
     <div>
         Hello World!!!
