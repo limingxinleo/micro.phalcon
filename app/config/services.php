@@ -2,6 +2,7 @@
 
 use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Mvc\Url as UrlResolver;
+use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 
 /**
  * Shared configuration service

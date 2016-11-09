@@ -8,7 +8,7 @@
  * Add your routes here
  */
 $app->get('/', function () {
-    echo $this['view']->render('index');
+    echo $this['view']->render('app/index');
 });
 
 $app->get('/test', function () {
@@ -20,7 +20,7 @@ $app->get('/test', function () {
 /**
  * Not found handler
  */
-$app->notFound(function () {
-    $this->response->setStatusCode(404, "Not Found")->sendHeaders();
-    echo $this['view']->render('404');
+$app->notFound(function () use ($app) {
+    $app->response->setStatusCode(404, "Not Found")->sendHeaders();
+    echo $app['view']->render('404');
 });
