@@ -9,4 +9,8 @@ $loader->registerDirs(
     [
         $config->application->modelsDir
     ]
+)->registerFiles(
+    [
+        $config->application->libraryDir . 'helper.php',
+    ]
 )->register();

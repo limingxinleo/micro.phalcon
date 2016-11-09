@@ -12,7 +12,9 @@ $app->get('/', function () {
 });
 
 $app->get('/test', function () {
-    echo 1;
+    dump([1, 1, 1, 1]);
+    session('test', 'hello world');
+    dump(session('test'));
 });
 
 /**
