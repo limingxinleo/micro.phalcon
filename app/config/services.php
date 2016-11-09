@@ -18,6 +18,24 @@ $di->setShared('view', function () {
 
     $view = new View();
     $view->setViewsDir($config->application->viewsDir);
+    $view->registerEngines(
+        [
+            '.volt' => function ($view, $di) use ($config) {
+                $volt = new VoltEngine($view, $di);
+
+                $volt->setOptions(
+                    [
+                        'compiledPath' => $config->application->cacheDir,
+                        'compiledSeparator' => '_'
+                    ]
+                );
+
+                return $volt;
+            },
+            // Generate Template files uses PHP itself as the template engine
+            '.phtml' => 'Phalcon\Mvc\View\Engine\Php',
+        ]
+    );
     return $view;
 });
 
@@ -40,11 +58,11 @@ $di->setShared('db', function () {
 
     $class = 'Phalcon\Db\Adapter\Pdo\\' . $config->database->adapter;
     $connection = new $class([
-        'host'     => $config->database->host,
+        'host' => $config->database->host,
         'username' => $config->database->username,
         'password' => $config->database->password,
-        'dbname'   => $config->database->dbname,
-        'charset'  => $config->database->charset
+        'dbname' => $config->database->dbname,
+        'charset' => $config->database->charset
     ]);
 
     return $connection;
