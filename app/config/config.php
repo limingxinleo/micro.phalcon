@@ -41,7 +41,10 @@ return new \Phalcon\Config(
             'migrationsDir' => APP_PATH . '/migrations/',
             'viewsDir' => APP_PATH . '/views/',
             'libraryDir' => APP_PATH . '/library/',
-            'cacheDir' => APP_PATH . '/cache/',
+            'cacheDir' => BASE_PATH . '/storage/cache/',
+            'migrationsDir' => BASE_PATH . '/storage/migrations/',
+            'logDir' => BASE_PATH . '/storage/log/',
+            'metaDataDir' => BASE_PATH . '/storage/meta/',
             'baseUri' => '/',
         ],
 

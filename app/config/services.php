@@ -26,7 +26,7 @@ $di->setShared('view', function () {
 
                 $volt->setOptions(
                     [
-                        'compiledPath' => $config->application->cacheDir,
+                        'compiledPath' => $config->application->cacheDir . 'view/',
                         'compiledSeparator' => '_'
                     ]
                 );

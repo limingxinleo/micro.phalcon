@@ -17,6 +17,13 @@ try {
     $di = new FactoryDefault();
 
     /**
+     * Read vendor autoload
+     */
+    if (file_exists(BASE_PATH . "/vendor/autoload.php")) {
+        include BASE_PATH . "/vendor/autoload.php";
+    }
+
+    /**
      * Include Services
      */
     include APP_PATH . '/config/services.php';
@@ -31,12 +38,7 @@ try {
      */
     include APP_PATH . '/config/loader.php';
 
-    /**
-     * Read vendor autoload
-     */
-    if (file_exists(BASE_PATH . "/vendor/autoload.php")) {
-        include BASE_PATH . "/vendor/autoload.php";
-    }
+    include APP_PATH . "/services/autoload.php";
 
     /**
      * Starting the application
@@ -55,6 +57,6 @@ try {
     $app->handle();
 
 } catch (\Exception $e) {
-      echo $e->getMessage() . '<br>';
-      echo '<pre>' . $e->getTraceAsString() . '</pre>';
+    echo $e->getMessage() . '<br>';
+    echo '<pre>' . $e->getTraceAsString() . '</pre>';
 }
