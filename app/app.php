@@ -12,8 +12,6 @@ $app->get('/', function () {
 });
 
 $app->get('/test', function () {
-    $user = User::findFirst(1);
-    dump($user);
 });
 
 /**
