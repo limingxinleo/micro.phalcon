@@ -4,6 +4,7 @@ use Phalcon\Mvc\View\Simple as View;
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
+use Phalcon\Mvc\Model\Metadata\Files as MetadataFiles;
 
 /**
  * Shared configuration service
@@ -78,5 +79,17 @@ $di->set('session', function () {
     $session->start();
 
     return $session;
+});
+
+/**
+ * If the configuration specify the use of metadata adapter use it or use memory otherwise
+ */
+$di->set('modelsMetadata', function () {
+    $config = $this->getConfig();
+    return new MetadataFiles(
+        [
+            'metaDataDir' => $config->application->metaDataDir,
+        ]
+    );
 });
 

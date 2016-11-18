@@ -12,9 +12,8 @@ $app->get('/', function () {
 });
 
 $app->get('/test', function () {
-    dump([1, 1, 1, 1]);
-    session('test', 'hello world');
-    dump(session('test'));
+    $user = User::findFirst(1);
+    dump($user);
 });
 
 /**
