@@ -12,6 +12,17 @@ $app->get('/', function () {
     echo $this['view']->render('app/index');
 });
 
+$app->get('/test/redis', function () {
+    $config = [
+        'host' => env('REDIS_HOST'),
+        'auth' => env('REDIS_AUTH'),
+        'port' => env('REDIS_PORT'),
+        'database' => 0,
+    ];
+    $redis = \limx\tools\LRedis::getInstance($config);
+    dump($redis->keys('*'));
+});
+
 $app->get('/test/params/{key}/{value}', function ($ss, $key) {
     dump($key);
 });
