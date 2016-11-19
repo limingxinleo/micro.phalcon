@@ -8,6 +8,7 @@
  * Add your routes here
  */
 $app->get('/', function () {
+    $this['view']->version = di('config')->version;
     echo $this['view']->render('app/index');
 });
 
