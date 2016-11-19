@@ -45,12 +45,12 @@ if ($config->cache->type !== false) {
             $cache = new BackRedis(
                 $frontCache,
                 [
-                    "host" => env('REDIS_HOST', '127.0.0.1'),
-                    "port" => env('REDIS_PORT', '6379'),
-                    "auth" => env('REDIS_AUTH', null),
-                    'persistent' => env('REDIS_PERSISTENT', false),
-                    'index' => env('REDIS_INDEX', 0),
-                    'prefix' => env('REDIS_PREFIX', 'cache:'),
+                    'host' => $redis->host,
+                    'port' => $redis->port,
+                    'auth' => $redis->auth,
+                    'persistent' => $redis->persistent,
+                    'index' => $redis->index,
+                    'prefix' => ':cache:',
                     'statsKey' => '_PHCM',
                 ]
             );
