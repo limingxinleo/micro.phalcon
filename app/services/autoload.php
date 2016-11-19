@@ -8,6 +8,14 @@
 // +----------------------------------------------------------------------
 // | Date: 2016/11/13 Time: 15:48
 // +----------------------------------------------------------------------
+
+if (file_exists(__DIR__ . '/system/session.php')) {
+    /**
+     * 注入SESSION 服务
+     */
+    include __DIR__ . '/system/session.php';
+}
+
 if (file_exists(__DIR__ . '/system/cache.php')) {
     include __DIR__ . '/system/cache.php';
 }

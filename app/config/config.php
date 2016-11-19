@@ -53,6 +53,23 @@ return new \Phalcon\Config(
 
         /*
         |--------------------------------------------------------------------------
+        | Redis Environment
+        |--------------------------------------------------------------------------
+        |
+        | This value determines the "environment" your redis.
+        |
+        */
+        'redis' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'port' => env('REDIS_PORT', '6379'),
+            'auth' => env('REDIS_AUTH', null),
+            'persistent' => env('REDIS_PERSISTENT', false),
+            'index' => env('REDIS_INDEX', 0),
+            'prefix' => env('REDIS_PREFIX', ''),
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
         | Application Environment
         |--------------------------------------------------------------------------
         |
@@ -72,6 +89,8 @@ return new \Phalcon\Config(
             'metaDataDir' => BASE_PATH . '/storage/meta/',
             'baseUri' => '/',
         ],
+
+
 
         /*
         |--------------------------------------------------------------------------
@@ -97,8 +116,21 @@ return new \Phalcon\Config(
         |
         */
         'cache' => [
-            'type' => 'file',
+            'type' => env('CACHE_DRIVER', 'file'),
             'lifetime' => 172800,
+        ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Cache Environment
+        |--------------------------------------------------------------------------
+        |
+        | The default setting is file.
+        | If you want to use redis ,you must set type=redis,
+        |
+        */
+        'session' => [
+            'type' => env('SESSION_DRIVER', 'file')
         ],
 
 

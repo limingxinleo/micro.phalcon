@@ -72,16 +72,6 @@ $di->setShared('db', function () {
 });
 
 /**
- * Start the session the first time some component request the session service
- */
-$di->set('session', function () {
-    $session = new SessionAdapter();
-    $session->start();
-
-    return $session;
-});
-
-/**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */
 $di->set('modelsMetadata', function () {
