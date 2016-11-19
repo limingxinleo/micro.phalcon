@@ -5,7 +5,12 @@
  */
 defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
 defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
 
+if (file_exists(BASE_PATH . '/.env')) {
+    (new Dotenv(BASE_PATH))->load();
+}
 return new \Phalcon\Config(
     [
         /*
@@ -58,21 +63,6 @@ return new \Phalcon\Config(
         */
         'log' => [
             'sql' => true,
-        ],
-
-        /*
-        |--------------------------------------------------------------------------
-        | Env Environment
-        |--------------------------------------------------------------------------
-        |
-        | The default setting is false.
-        | If you want to use .env, you must set type=true,
-        | THEN composer require vlucas/phpdotenv
-        |
-        */
-        'env' => [
-            'type' => false,
-            'path' => BASE_PATH,
         ],
 
         /*
