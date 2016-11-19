@@ -56,4 +56,14 @@ www  WEB部署目录（或者子目录）
 * 框架默认以文件的方式缓存元数据，一旦表结构被修改，请手动清理storage/meta文件下的元数据
 * 使用Phalcon 开发工具的时候，需要维护config/config.ini配置文件
 
+## Composer 国内镜像
+~~~
+"repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+~~~
+
 
