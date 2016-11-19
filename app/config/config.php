@@ -11,8 +11,29 @@ use Dotenv\Exception\InvalidPathException;
 if (file_exists(BASE_PATH . '/.env')) {
     (new Dotenv(BASE_PATH))->load();
 }
+
 return new \Phalcon\Config(
     [
+        /*
+       |--------------------------------------------------------------------------
+       | Version Environment
+       |--------------------------------------------------------------------------
+       |
+       | This value is version for this project.
+       |
+       */
+        'version' => '1.1.0',
+
+        /*
+        |--------------------------------------------------------------------------
+        | Unique_id Environment
+        |--------------------------------------------------------------------------
+        |
+        | This value is your-private-app for this project.
+        |
+        */
+        'unique_id' => env('UNIQUE_ID', 'micro'),
+
         /*
         |--------------------------------------------------------------------------
         | Database Environment
@@ -22,12 +43,12 @@ return new \Phalcon\Config(
         |
         */
         'database' => [
-            'adapter' => 'Mysql',
-            'host' => 'localhost',
-            'username' => 'root',
-            'password' => '910123',
-            'dbname' => 'laravel',
-            'charset' => 'utf8',
+            'adapter' => env('DB_ADAPTER', 'Mysql'),
+            'host' => env('DB_HOST', 'localhost'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', null),
+            'dbname' => env('DB_DBNAME', 'phalcon'),
+            'charset' => env('DB_CHARSET', 'utf8'),
         ],
 
         /*
@@ -43,7 +64,6 @@ return new \Phalcon\Config(
         'application' => [
             'configDir' => APP_PATH . '/config/',
             'modelsDir' => APP_PATH . '/models/',
-            'migrationsDir' => APP_PATH . '/migrations/',
             'viewsDir' => APP_PATH . '/views/',
             'libraryDir' => APP_PATH . '/library/',
             'cacheDir' => BASE_PATH . '/storage/cache/',
