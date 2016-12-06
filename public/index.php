@@ -38,8 +38,6 @@ try {
      */
     include APP_PATH . '/config/loader.php';
 
-    include APP_PATH . "/services/autoload.php";
-
     /**
      * Starting the application
      * Assign service locator to the application
@@ -49,8 +47,8 @@ try {
     /**
      * Include Application
      */
-//    include APP_PATH . '/app.example.php';
-    include APP_PATH . '/app.php';
+    include APP_PATH . '/app.example.php';
+//    include APP_PATH . '/app.php';
 
     /**
      * Handle the request
