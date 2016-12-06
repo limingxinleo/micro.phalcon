@@ -83,3 +83,13 @@ $di->set('modelsMetadata', function () {
     );
 });
 
+/**
+ * Read other services
+ */
+foreach (di('config')->services as $service) {
+    $config = di('config');
+    if (file_exists($config->application->servicesDir . $service)) {
+        include $config->application->servicesDir . $service;
+    }
+}
+
