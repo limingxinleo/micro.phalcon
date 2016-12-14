@@ -12,6 +12,10 @@ $app->get('/', function () {
     echo $this['view']->render('app/index');
 });
 
+$app->get('/test/time', function () {
+    dump(time());
+});
+
 $app->get('/test/redis', function () {
     $config = [
         'host' => env('REDIS_HOST'),
