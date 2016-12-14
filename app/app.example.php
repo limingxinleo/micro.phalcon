@@ -14,6 +14,8 @@ $app->get('/', function () {
 
 $app->get('/test/time', function () {
     dump(time());
+    dump(date('Y-m-d'));
+    dump(strtotime(date('Y-m-d')));
 });
 
 $app->get('/test/redis', function () {
