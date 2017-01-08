@@ -94,6 +94,7 @@ return new \Phalcon\Config(
             'viewsDir' => APP_PATH . '/views/',
             'libraryDir' => APP_PATH . '/library/',
             'servicesDir' => APP_PATH . '/services/',
+            'tasksDir' => APP_PATH . '/tasks/',
             'cacheDir' => BASE_PATH . '/storage/cache/',
             'migrationsDir' => BASE_PATH . '/storage/migrations/',
             'logDir' => BASE_PATH . '/storage/log/',

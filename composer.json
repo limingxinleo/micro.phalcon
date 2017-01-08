@@ -18,7 +18,8 @@
     "scripts": {
         "post-create-project-cmd": [
             "mkdir .phalcon",
-            "php -r \"copy('.env.example', '.env');\""
+            "php -r \"copy('.env.example', '.env');\"",
+            "php run Init storage"
         ]
     }
 }
