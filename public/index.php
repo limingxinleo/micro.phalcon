@@ -33,6 +33,9 @@ try {
      */
     $config = $di->getConfig();
 
+    /** 设置时区 */
+    ini_set('date.timezone', $config->timezone);
+
     /**
      * Include Autoloader
      */

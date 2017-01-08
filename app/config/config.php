@@ -36,6 +36,16 @@ return new \Phalcon\Config(
 
         /*
         |--------------------------------------------------------------------------
+        | Timezone Environment
+        |--------------------------------------------------------------------------
+        |
+        | This value is the timezone for app.
+        |
+        */
+        'timezone' => env('APP_TIMEZONE', 'Asia/Shanghai'),
+
+        /*
+        |--------------------------------------------------------------------------
         | Database Environment
         |--------------------------------------------------------------------------
         |
@@ -83,14 +93,13 @@ return new \Phalcon\Config(
             'modelsDir' => APP_PATH . '/models/',
             'viewsDir' => APP_PATH . '/views/',
             'libraryDir' => APP_PATH . '/library/',
+            'servicesDir' => APP_PATH . '/services/',
             'cacheDir' => BASE_PATH . '/storage/cache/',
             'migrationsDir' => BASE_PATH . '/storage/migrations/',
             'logDir' => BASE_PATH . '/storage/log/',
             'metaDataDir' => BASE_PATH . '/storage/meta/',
-            'servicesDir' => APP_PATH . '/services/',
             'baseUri' => '/',
         ],
-
 
 
         /*
