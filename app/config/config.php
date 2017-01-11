@@ -90,6 +90,7 @@ return new \Phalcon\Config(
         */
         'application' => [
             'configDir' => APP_PATH . '/config/',
+            'controllersDir' => APP_PATH . '/controllers/',
             'modelsDir' => APP_PATH . '/models/',
             'viewsDir' => APP_PATH . '/views/',
             'libraryDir' => APP_PATH . '/library/',

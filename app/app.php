@@ -12,9 +12,6 @@ $app->get('/', function () {
     echo $this['view']->render('app/index');
 });
 
-$app->get('/test', function () {
-});
-
 /**
  * Not found handler
  */
