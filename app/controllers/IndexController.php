@@ -2,6 +2,8 @@
 
 class IndexController extends \Phalcon\Mvc\Controller
 {
+    use Response;
+
     public function index()
     {
         $users = User::find();
@@ -11,6 +13,12 @@ class IndexController extends \Phalcon\Mvc\Controller
                 dump($book->name);
             }
         }
+    }
+
+    public function api()
+    {
+        $users = User::find();
+        return self::success($users);
     }
 
 }

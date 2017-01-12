@@ -19,4 +19,5 @@ $index->setHandler(
 $index->setPrefix("/index");
 //  使用IndexController中的index action
 $index->get("/", "index");
+$index->get("/api", "api");
 $app->mount($index);
