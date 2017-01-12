@@ -2,7 +2,6 @@
 
 class IndexController extends \Phalcon\Mvc\Controller
 {
-
     public function index()
     {
         $this->view->version = di('config')->version;
