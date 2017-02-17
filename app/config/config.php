@@ -92,6 +92,7 @@ return new \Phalcon\Config(
             'configDir' => APP_PATH . '/config/',
             'controllersDir' => APP_PATH . '/controllers/',
             'modelsDir' => APP_PATH . '/models/',
+            'routersDir' => APP_PATH . '/routers/',
             'viewsDir' => APP_PATH . '/views/',
             'libraryDir' => APP_PATH . '/library/',
             'servicesDir' => APP_PATH . '/services/',
