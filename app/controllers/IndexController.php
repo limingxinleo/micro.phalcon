@@ -20,6 +20,5 @@ class IndexController extends \Phalcon\Mvc\Controller
         $users = User::find();
         return self::success($users);
     }
-
 }
 
