@@ -13,7 +13,7 @@ foreach (glob($config->application->routersDir . "*.php") as $router) {
  */
 $app->get('/', function () {
     $this['view']->version = di('config')->version;
-    echo $this['view']->render('app/index');
+    return $this['view']->render('app/index');
 });
 
 /**
@@ -21,7 +21,7 @@ $app->get('/', function () {
  */
 $app->notFound(function () use ($app) {
     $app->response->setStatusCode(404, "Not Found")->sendHeaders();
-    echo $app['view']->render('404');
+    return $app['view']->render('public/404');
 });
 
 

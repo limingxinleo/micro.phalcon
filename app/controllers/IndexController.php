@@ -1,6 +1,7 @@
 <?php
+namespace MyApp\Controllers;
 
-class IndexController extends \Phalcon\Mvc\Controller
+class IndexController extends ControllerBase
 {
     public function index()
     {
