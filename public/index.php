@@ -51,7 +51,7 @@ try {
      * Include Application
      */
     // include APP_PATH . '/config/router.php';
-    include APP_PATH . '/app.php';
+    include APP_PATH . '/router.php';
 
     /**
      * Handle the request
