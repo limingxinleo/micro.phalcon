@@ -5,8 +5,11 @@ class IndexController extends ControllerBase
 {
     public function index()
     {
-        $this->view->version = di('config')->version;
-        return $this->view->render('app/index');
+        $data = [
+            'name' => 'phalcon-micro',
+            'version' => di('config')->version,
+        ];
+        return self::success($data);
     }
 }
 
