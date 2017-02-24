@@ -1,23 +1,29 @@
 <?php
 // +----------------------------------------------------------------------
-// | 默认路由文件 [ WE CAN DO IT JUST THINK IT ]
+// | CronTask 定时器脚本 [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
 // | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
 // +----------------------------------------------------------------------
-// | Date: 2017/2/17 Time: 下午2:44
+// | Date: 2016/12/25 Time: 16:53
 // +----------------------------------------------------------------------
-use Phalcon\Mvc\Micro\Collection as MicroCollection;
+namespace MyApp\Tasks\System;
 
-$index = new MicroCollection();
-// 设置主处理器，这里是控制器的实例
-$index->setHandler(
-    new MyApp\Controllers\IndexController()
-);
-// 对所有路由设置前缀
-$index->setPrefix("/index");
-//  使用IndexController中的index action
-$index->get("/", "index");
-$index->get("/api", "api");
-$app->mount($index);
+use Phalcon\Cli\Task;
+use limx\func\Str;
+
+class CronTask extends Task
+{
+    public function mainAction()
+    {
+        $time = date('H:i');
+        $tasks = app('cron-tasks');
+        foreach ($tasks as $task) {
+            if (Str::contains($task['time'], $time) || $task['time'] === '') {
+                $this->console->handle($task);
+            }
+        }
+    }
+    
+}

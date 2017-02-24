@@ -5,15 +5,19 @@
  */
 $loader = new \Phalcon\Loader();
 
-$loader->registerDirs(
-    [
-        $config->application->modelsDir,
-        $config->application->tasksDir,
-        $config->application->controllersDir,
-        $config->application->traitsDir,
-    ]
-)->registerFiles(
-    [
-        $config->application->libraryDir . 'helper.php',
-    ]
-)->register();
+$loader
+    ->registerNamespaces(
+        [
+            'MyApp\Controllers' => $config->application->controllersDir,
+            'MyApp\Models' => $config->application->modelsDir,
+            'MyApp\Tasks' => $config->application->tasksDir,
+            'MyApp\Tasks\System' => $config->application->tasksDir . 'system/',
+            'MyApp\Traits' => $config->application->traitsDir,
+            'MyApp\Traits\System' => $config->application->traitsDir . 'system/',
+
+        ]
+    )->registerFiles(
+        [
+            $config->application->libraryDir . 'helper.php',
+        ]
+    )->register();
