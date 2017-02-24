@@ -22,7 +22,7 @@ return new \Phalcon\Config(
        | This value is version for this project.
        |
        */
-        'version' => '1.5.0',
+        'version' => '1.5.2',
 
         /*
         |--------------------------------------------------------------------------
