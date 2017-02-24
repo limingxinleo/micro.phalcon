@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApp\Models;
+
 class Role extends \Phalcon\Mvc\Model
 {
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApp\Models;
+
 class Book extends \Phalcon\Mvc\Model
 {
 
@@ -39,6 +41,13 @@ class Book extends \Phalcon\Mvc\Model
      * @Column(type="string", nullable=true)
      */
     public $updated_at;
+
+    /**
+     *
+     * @var double
+     * @Column(type="double", length=10, nullable=true)
+     */
+    public $money;
 
     /**
      * Initialize method for model.

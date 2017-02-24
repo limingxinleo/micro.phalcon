@@ -1,8 +1,10 @@
 <?php
+namespace MyApp\Controllers;
 
-class IndexController extends \Phalcon\Mvc\Controller
+use MyApp\Models\User;
+
+class IndexController extends ControllerBase
 {
-    use Response;
 
     public function index()
     {

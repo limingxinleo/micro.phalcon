@@ -1,5 +1,7 @@
 <?php
 
+namespace MyApp\Models;
+
 class UserTitle extends \Phalcon\Mvc\Model
 {
 
