@@ -11,4 +11,6 @@ $index->setPrefix("/test/index");
 //  使用IndexController中的index action
 $index->get("/", "index");
 $index->get("/api", "api");
+$index->get("/cache", "cache");
+$index->get("/cookie", "cookie");
 $app->mount($index);
