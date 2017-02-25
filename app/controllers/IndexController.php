@@ -1,26 +1,15 @@
 <?php
 namespace MyApp\Controllers;
 
-use MyApp\Models\User;
-
 class IndexController extends ControllerBase
 {
-
     public function index()
     {
-        $users = User::find();
-        foreach ($users as $user) {
-            dump($user->name);
-            foreach ($user->book as $book) {
-                dump($book->name);
-            }
-        }
-    }
-
-    public function api()
-    {
-        $users = User::find();
-        return self::success($users);
+        $data = [
+            'name' => 'phalcon-micro',
+            'version' => di('config')->version,
+        ];
+        return self::success($data);
     }
 }
 

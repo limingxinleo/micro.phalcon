@@ -9,6 +9,7 @@ $loader
     ->registerNamespaces(
         [
             'MyApp\Controllers' => $config->application->controllersDir,
+            'MyApp\Controllers\Test' => $config->application->controllersDir . 'test/',
             'MyApp\Models' => $config->application->modelsDir,
             'MyApp\Tasks' => $config->application->tasksDir,
             'MyApp\Tasks\System' => $config->application->tasksDir . 'system/',
