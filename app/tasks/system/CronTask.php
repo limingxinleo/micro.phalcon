@@ -11,7 +11,9 @@
 namespace MyApp\Tasks\System;
 
 use Phalcon\Cli\Task;
-use limx\func\Str;
+use limx\phalcon\Utils\Str;
+use limx\phalcon\Cli\Color;
+use limx\phalcon\Logger;
 
 class CronTask extends Task
 {
@@ -19,11 +21,25 @@ class CronTask extends Task
     {
         $time = date('H:i');
         $tasks = app('cron-tasks');
+
         foreach ($tasks as $task) {
             if (Str::contains($task['time'], $time) || $task['time'] === '') {
+                $this->logInfo(json_encode($task));
                 $this->console->handle($task);
             }
         }
     }
-    
+
+    /**
+     * @desc   保存日志
+     * @author limx
+     * @param $msg
+     */
+    protected function logInfo($msg)
+    {
+        $logger = Logger::getInstance('file', 'cron.log', 'system');
+        $logger->info($msg);
+        echo Color::success($msg);
+    }
+
 }

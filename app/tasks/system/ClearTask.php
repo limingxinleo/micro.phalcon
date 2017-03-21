@@ -11,7 +11,6 @@
 namespace MyApp\Tasks\System;
 
 use Phalcon\Cli\Task;
-use limx\func\File;
 use limx\phalcon\Cli\Color;
 
 class ClearTask extends Task
@@ -47,13 +46,13 @@ class ClearTask extends Task
             }
         }
         // 删除缓存
-        File::rm($dir, false);
+        $this->delete($dir, false);
         echo Color::success("The Cache was successfully deleted.");
     }
 
     /**
      * [viewAction desc]
-     * @desc 清理视图缓存
+     * @desc   清理视图缓存
      * @author limx
      * @param array $params
      */
@@ -69,13 +68,13 @@ class ClearTask extends Task
             }
         }
         // 删除缓存
-        File::rm($dir, false);
+        $this->delete($dir);
         echo Color::success("The Cache was successfully deleted.");
     }
 
     /**
      * [metaAction desc]
-     * @desc 清理元数据缓存
+     * @desc   清理元数据缓存
      * @author limx
      * @param array $params
      */
@@ -91,8 +90,44 @@ class ClearTask extends Task
             }
         }
         // 删除缓存
-        File::rm($dir, false);
+        $this->delete($dir);
         echo Color::success("The Cache was successfully deleted.");
+    }
+
+    private function delete($dir)
+    {
+        if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
+            self::rm($dir, false);
+            return;
+        }
+        $str = "rm -rf " . $dir . "*";
+        system($str);
+    }
+
+    /**
+     * @desc   递归删除某个文件夹下的文件
+     * @author limx
+     * @param $src      目录地址
+     * @param $isDelDir 是否删除当前文件夹
+     * @return bool
+     */
+    private static function rm($src, $isDelDir = true)
+    {
+        if (empty($src)) return false;
+        $ls = scandir($src);
+        for ($i = 0; $i < count($ls); $i++) {
+            if ($ls[$i] == '.' or $ls[$i] == '..') continue;
+            $_dst = $src . $ls[$i];
+            if (!is_dir($_dst)) {
+                unlink($_dst);
+            } else {
+                self::rm($_dst);
+            }
+        }
+        //删除当前文件夹：
+        if ($isDelDir) {
+            rmdir($src);
+        }
     }
 
 }

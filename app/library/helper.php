@@ -6,15 +6,17 @@
 // +----------------------------------------------------------------------
 // | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
 // +----------------------------------------------------------------------
-// | Date: 2016/11/9 Time: 14:34
+// | Date: 2016/11/9 Time: 9:55
 // +----------------------------------------------------------------------
-use limx\func\Debug;
-use limx\phalcon\Ajax;
+use limx\phalcon\Utils\Debug;
+use limx\phalcon\Http\Response;
+use limx\phalcon\Utils\Arr;
+
 
 if (!function_exists('dump')) {
     /**
      * [dump desc]
-     * @desc 标准化的数组输出格式
+     * @desc   标准化的数组输出格式
      * @author limx
      * @param $data
      */
@@ -30,12 +32,12 @@ if (!function_exists('success')) {
      * [success desc]
      * @desc
      * @author limx
-     * @param $data
-     * @return \limx\phalcon\JsonResponse
+     * @param array $data
+     * @return mixed
      */
-    function success($data)
+    function success($data = [])
     {
-        return Ajax::success($data);
+        return Response::send(1, $data);
     }
 }
 
@@ -45,11 +47,13 @@ if (!function_exists('error')) {
      * [error desc]
      * @desc
      * @author limx
-     * @param $data
-     * @return \limx\phalcon\JsonResponse
+     * @param string $msg
+     * @param array  $data
+     * @return mixed
      */
-    function error($data)
+    function error($msg = '', $data = [])
     {
-        return Ajax::error($data);
+        return Response::send(0, $data, $msg);
     }
 }
+

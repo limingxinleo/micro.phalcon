@@ -13,6 +13,7 @@ namespace MyApp\Tasks\System;
 
 use Phalcon\Cli\Task;
 use limx\phalcon\Cli\Color;
+use swoole_process;
 
 abstract class QueueTask extends Task
 {
@@ -38,10 +39,10 @@ abstract class QueueTask extends Task
         // install signal handler for dead kids
         pcntl_signal(SIGCHLD, [$this, "signalHandler"]);
         set_time_limit(0);
-
+        // 实例化Redis实例
+        $redis = $this->redisClient();
         while (true) {
             if ($this->process < $this->maxProcesses) {
-                $redis = $this->redisClient();
                 $data = $redis->brpop($this->queueKey, 3);//无任务时,阻塞等待
                 if (!$data) {
                     continue;
@@ -51,8 +52,8 @@ abstract class QueueTask extends Task
                     continue;
                 }
                 if (isset($data[1])) {
-                    $process = new \swoole_process([$this, 'task']);
-                    $process->write($data[1]);
+                    $process = new swoole_process([$this, 'task']);
+                    $process->write($this->rewrite($data[1]));
                     $pid = $process->start();
                     if ($pid === false) {
                         $redis->lpush($this->queueKey, $data[1]);
@@ -69,11 +70,11 @@ abstract class QueueTask extends Task
     }
 
     /**
-     * @desc 子进程
+     * @desc   子进程
      * @author limx
-     * @param \swoole_process $worker
+     * @param swoole_process $worker
      */
-    public function task(\swoole_process $worker)
+    public function task(swoole_process $worker)
     {
         swoole_event_add($worker->pipe, function ($pipe) use ($worker) {
             $recv = $worker->read();            //send data to master
@@ -84,21 +85,34 @@ abstract class QueueTask extends Task
     }
 
     /**
-     * @desc 返回redis实例
+     * @desc   主进程中操作数据
+     * @tip    主进程中不能实例化DB类，因为Mysql连接会中断
+     *         暂时原因不明，可能是会被子进程释放掉
+     * @author limx
+     * @param $data 消息队列中的数据
+     * @return mixed 返回给子进程的数据
+     */
+    protected function rewrite($data)
+    {
+        return $data;
+    }
+
+    /**
+     * @desc   返回redis实例
      * @author limx
      * @return mixed
      */
     abstract protected function redisClient();
 
     /**
-     * @desc 消息队列执行的业务代码
+     * @desc   消息队列执行的业务代码
      * @author limx
      * @return mixed
      */
     abstract protected function run($recv);
 
     /**
-     * @desc 信号处理方法 回收已经dead的子进程
+     * @desc   信号处理方法 回收已经dead的子进程
      * @author limx
      * @param $signo
      */
@@ -106,7 +120,7 @@ abstract class QueueTask extends Task
     {
         switch ($signo) {
             case SIGCHLD:
-                while ($ret = \swoole_process::wait(false)) {
+                while ($ret = swoole_process::wait(false)) {
                     $this->process--;
                 }
         }
