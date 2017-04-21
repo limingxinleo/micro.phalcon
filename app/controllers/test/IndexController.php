@@ -19,6 +19,11 @@ class IndexController extends ControllerBase
         }
     }
 
+    public function hello()
+    {
+        echo "HELLO WORLD!";
+    }
+
     public function api()
     {
         $users = User::find();

@@ -13,4 +13,5 @@ $index->get("/", "index");
 $index->get("/api", "api");
 $index->get("/cache", "cache");
 $index->get("/cookie", "cookie");
+$index->get("/hello", "hello");
 $app->mount($index);
