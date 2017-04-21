@@ -1,4 +1,9 @@
-/vendor/
-.idea/
+.idea
+vendor/
 composer.lock
+.phalcon
 .env
+.env.bak
+storage/log/*
+storage/cache/*
+storage/meta/*
