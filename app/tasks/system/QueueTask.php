@@ -9,7 +9,7 @@
 // | Date: 2017/2/4 Time: 上午10:00
 // +----------------------------------------------------------------------
 declare(ticks = 1);
-namespace MyApp\Tasks\System;
+namespace App\Tasks\System;
 
 use Phalcon\Cli\Task;
 use limx\phalcon\Cli\Color;

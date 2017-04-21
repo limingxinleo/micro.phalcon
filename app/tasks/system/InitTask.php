@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Date: 2016/11/10 Time: 11:07
 // +----------------------------------------------------------------------
-namespace MyApp\Tasks\System;
+namespace App\Tasks\System;
 
 use limx\phalcon\Cli\Color;
 use Phalcon\Cli\Task;
@@ -65,7 +65,7 @@ class InitTask extends Task
     public function namespaceAction()
     {
         echo Color::head('命名空间初始化') . PHP_EOL;
-        echo Color::colorize('  默认的命名空间是MyApp', Color::BG_GREEN) . PHP_EOL;
+        echo Color::colorize('  默认的命名空间是App', Color::BG_GREEN) . PHP_EOL;
         echo Color::colorize('  确定要重写命名空间么？(yes or no)', Color::BG_GREEN) . PHP_EOL;
         $arg = trim(fgets(STDIN));
         if ($arg == 'yes') {
@@ -76,7 +76,7 @@ class InitTask extends Task
                 traverse(APP_PATH, $res);
                 foreach ($res as $v) {
                     $file = file_get_contents($v);
-                    $file = str_replace('MyApp', $arg, $file);
+                    $file = str_replace('App', $arg, $file);
                     file_put_contents($v, $file);
                 }
             }

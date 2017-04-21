@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Date: 2017/3/16 Time: 上午9:27
 // +----------------------------------------------------------------------
-namespace MyApp\Tasks\System;
+namespace App\Tasks\System;
 
 use Phalcon\Cli\Task;
 use limx\phalcon\Cli\Color;
