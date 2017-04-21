@@ -1,18 +1,16 @@
 <?php
 // +----------------------------------------------------------------------
-// | InitTask 初始化脚本 [ WE CAN DO IT JUST THINK IT ]
+// | 初始化脚本 [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
-// +----------------------------------------------------------------------
-// | Date: 2016/11/10 Time: 11:07
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 namespace App\Tasks\System;
 
 use limx\phalcon\Cli\Color;
-use Phalcon\Cli\Task;
 use limx\phalcon\Utils\Str;
+use Phalcon\Cli\Task;
 
 class InitTask extends Task
 {
@@ -30,7 +28,6 @@ class InitTask extends Task
 
         echo Color::head('Actions:') . PHP_EOL;
         echo Color::colorize('  storage                         初始化仓库', Color::FG_GREEN) . PHP_EOL;
-        echo Color::colorize('  namespace                       初始化命名空间', Color::FG_GREEN) . PHP_EOL;
         echo Color::colorize('  key     [key] [--random|val]    初始化配置参数', Color::FG_GREEN) . PHP_EOL;
     }
 
@@ -59,32 +56,6 @@ class InitTask extends Task
     }
 
     /**
-     * @desc   初始化命名空间
-     * @author limx
-     */
-    public function namespaceAction()
-    {
-        echo Color::head('命名空间初始化') . PHP_EOL;
-        echo Color::colorize('  默认的命名空间是App', Color::BG_GREEN) . PHP_EOL;
-        echo Color::colorize('  确定要重写命名空间么？(yes or no)', Color::BG_GREEN) . PHP_EOL;
-        $arg = trim(fgets(STDIN));
-        if ($arg == 'yes') {
-            echo Color::colorize('请输入您的命名空间', Color::BG_GREEN) . PHP_EOL;
-            $arg = trim(fgets(STDIN));
-            if (!empty($arg)) {
-                $res = [];
-                traverse(APP_PATH, $res);
-                foreach ($res as $v) {
-                    $file = file_get_contents($v);
-                    $file = str_replace('App', $arg, $file);
-                    file_put_contents($v, $file);
-                }
-            }
-        }
-        echo Color::success("You're now flying with Phalcon.");
-    }
-
-    /**
      * @desc   初始化配置KEY
      * @author limx
      */
@@ -95,13 +66,13 @@ class InitTask extends Task
             return false;
         }
         $key = strtoupper($params[0]);
-        $val = self::random($params[1]);
+        $val = static::random($params[1]);
         echo Color::head($key . '初始化') . PHP_EOL;
         $pattern = "/^{$key}=.*/m";
-        file_put_contents(BASE_PATH . '/.env', preg_replace(
+        file_put_contents(ROOT_PATH . '/.env', preg_replace(
             $pattern,
             $key . '=' . $val,
-            file_get_contents(BASE_PATH . '/.env')
+            file_get_contents(ROOT_PATH . '/.env')
         ));
         echo Color::success($key . " was successfully changed.");
 
@@ -110,16 +81,24 @@ class InitTask extends Task
     private static function random($val)
     {
         $len = rand(12, 50);
+        $res = $val;
         switch ($val) {
             case "--random-base64":
-                return base64_encode(Str::random($len));
+                $res = base64_encode(Str::random($len));
+                break;
+
             case "--random-md5":
-                return md5(Str::random($len));
+                $res = md5(Str::random($len));
+                break;
+
             case "--random":
-                return Str::random($len);
-            default :
-                return $val;
+                $res = Str::random($len);
+                break;
+
+            default:
+                break;
         }
+        return $res;
     }
 
 }

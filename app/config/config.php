@@ -3,13 +3,13 @@
  * Modified: preppend directory path of current file, because of this file own different ENV under between Apache and command line.
  * NOTE: please remove this comment.
  */
-defined('BASE_PATH') || define('BASE_PATH', getenv('BASE_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
-defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
+defined('ROOT_PATH') || define('ROOT_PATH', getenv('ROOT_PATH') ?: realpath(dirname(__FILE__) . '/../..'));
+defined('APP_PATH') || define('APP_PATH', ROOT_PATH . '/app');
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
 
-if (file_exists(BASE_PATH . '/.env')) {
-    (new Dotenv(BASE_PATH))->load();
+if (file_exists(ROOT_PATH . '/.env')) {
+    (new Dotenv(ROOT_PATH))->load();
 }
 
 return new \Phalcon\Config(
@@ -98,10 +98,10 @@ return new \Phalcon\Config(
             'servicesDir' => APP_PATH . '/services/',
             'tasksDir' => APP_PATH . '/tasks/',
             'traitsDir' => APP_PATH . '/traits/',
-            'cacheDir' => BASE_PATH . '/storage/cache/',
-            'migrationsDir' => BASE_PATH . '/storage/migrations/',
-            'logDir' => BASE_PATH . '/storage/log/',
-            'metaDataDir' => BASE_PATH . '/storage/meta/',
+            'cacheDir' => ROOT_PATH . '/storage/cache/',
+            'migrationsDir' => ROOT_PATH . '/storage/migrations/',
+            'logDir' => ROOT_PATH . '/storage/log/',
+            'metaDataDir' => ROOT_PATH . '/storage/meta/',
             'baseUri' => '/',
         ],
 

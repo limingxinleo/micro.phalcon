@@ -5,6 +5,8 @@
 
 ### Changed
 * 更换LOGO
+* 修改命名空间
+* 修改根目录
 
 ### Fixed
 

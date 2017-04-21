@@ -5,8 +5,8 @@ use Phalcon\Mvc\Micro;
 
 error_reporting(E_ALL);
 
-define('BASE_PATH', dirname(__DIR__));
-define('APP_PATH', BASE_PATH . '/app');
+define('ROOT_PATH', dirname(__DIR__));
+define('APP_PATH', ROOT_PATH . '/app');
 define('IS_CLI', false);
 
 try {
@@ -20,8 +20,8 @@ try {
     /**
      * Read vendor autoload
      */
-    if (file_exists(BASE_PATH . "/vendor/autoload.php")) {
-        include BASE_PATH . "/vendor/autoload.php";
+    if (file_exists(ROOT_PATH . "/vendor/autoload.php")) {
+        include ROOT_PATH . "/vendor/autoload.php";
     }
 
     /**
