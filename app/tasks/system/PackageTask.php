@@ -1,22 +1,20 @@
 <?php
 // +----------------------------------------------------------------------
-// | PackageTask 打包脚本 [ WE CAN DO IT JUST THINK IT ]
+// | 打包脚本 [ WE CAN DO IT JUST THINK IT ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.lmx0536.cn All rights reserved.
+// | Copyright (c) 2016-2017 limingxinleo All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: limx <715557344@qq.com> <http://www.lmx0536.cn>
-// +----------------------------------------------------------------------
-// | Date: 2016/11/10 Time: 10:56
+// | Author: limx <715557344@qq.com> <https://github.com/limingxinleo>
 // +----------------------------------------------------------------------
 namespace App\Tasks\System;
 
-use Phalcon\Cli\Task;
 use limx\tools\Package as Pack;
+use Phalcon\Cli\Task;
 
 class PackageTask extends Task
 {
     private $config = [
-        'root' => BASE_PATH, // 项目根目录
+        'root' => ROOT_PATH, // 项目根目录
         // 需要打包的相对文件夹
         'files' => [
             'app',
