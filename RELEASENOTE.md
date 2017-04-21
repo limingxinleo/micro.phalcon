@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+* 更换LOGO
 
 ### Fixed
 
