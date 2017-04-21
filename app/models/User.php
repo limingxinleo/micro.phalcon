@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Models;
+namespace App\Models;
 
 use Phalcon\Validation;
 
@@ -72,7 +72,7 @@ class User extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("phalcon");
-        $this->hasMany('id', 'MyApp\\Models\\Book', 'uid', ['alias' => 'book']);
+        $this->hasMany('id', 'App\\Models\\Book', 'uid', ['alias' => 'book']);
 
     }
 

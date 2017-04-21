@@ -1,9 +1,9 @@
 <?php
 
-namespace MyApp\Controllers\Test;
+namespace App\Controllers\Test;
 
-use MyApp\Controllers\ControllerBase;
-use MyApp\Models\User;
+use App\Controllers\ControllerBase;
+use App\Models\User;
 
 class IndexController extends ControllerBase
 {

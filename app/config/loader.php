@@ -8,15 +8,14 @@ $loader = new \Phalcon\Loader();
 $loader
     ->registerNamespaces(
         [
-            'MyApp\Controllers' => $config->application->controllersDir,
-            'MyApp\Controllers\Test' => $config->application->controllersDir . 'test/',
-            'MyApp\Models' => $config->application->modelsDir,
-            'MyApp\Tasks' => $config->application->tasksDir,
-            'MyApp\Tasks\System' => $config->application->tasksDir . 'system/',
-            'MyApp\Tasks\Test' => $config->application->tasksDir . 'test/',
-            'MyApp\Traits' => $config->application->traitsDir,
-            'MyApp\Traits\System' => $config->application->traitsDir . 'system/',
-
+            'App\Controllers' => $config->application->controllersDir,
+            'App\Controllers\Test' => $config->application->controllersDir . 'test/',
+            'App\Models' => $config->application->modelsDir,
+            'App\Tasks' => $config->application->tasksDir,
+            'App\Tasks\System' => $config->application->tasksDir . 'system/',
+            'App\Tasks\Test' => $config->application->tasksDir . 'test/',
+            'App\Traits' => $config->application->traitsDir,
+            'App\Traits\System' => $config->application->traitsDir . 'system/',
         ]
     )->registerFiles(
         [

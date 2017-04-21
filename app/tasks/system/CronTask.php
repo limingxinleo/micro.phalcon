@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Date: 2016/12/25 Time: 16:53
 // +----------------------------------------------------------------------
-namespace MyApp\Tasks\System;
+namespace App\Tasks\System;
 
 use Phalcon\Cli\Task;
 use limx\phalcon\Utils\Str;

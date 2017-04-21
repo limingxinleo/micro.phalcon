@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Date: 2016/11/10 Time: 10:56
 // +----------------------------------------------------------------------
-namespace MyApp\Tasks\System;
+namespace App\Tasks\System;
 
 use Phalcon\Cli\Task;
 use limx\tools\Package as Pack;

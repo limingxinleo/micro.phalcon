@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Models;
+namespace App\Models;
 
 class Book extends \Phalcon\Mvc\Model
 {

@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Date: 2017/1/8 Time: 上午11:31
 // +----------------------------------------------------------------------
-namespace MyApp\Traits\System;
+namespace App\Traits\System;
 
 use limx\phalcon\Http\Response as HttpResponse;
 

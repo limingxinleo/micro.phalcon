@@ -1,9 +1,9 @@
 <?php
 
-namespace MyApp\Controllers;
+namespace App\Controllers;
 
 use Phalcon\Mvc\Controller;
-use MyApp\Traits\System\Response;
+use App\Traits\System\Response;
 
 class ControllerBase extends Controller
 {

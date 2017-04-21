@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 // | Date: 2016/11/14 Time: 13:39
 // +----------------------------------------------------------------------
-namespace MyApp\Tasks\System;
+namespace App\Tasks\System;
 
 use Phalcon\Cli\Task;
 use limx\phalcon\Cli\Color;

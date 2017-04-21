@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Models;
+namespace App\Models;
 
 class Title extends \Phalcon\Mvc\Model
 {
