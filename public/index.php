@@ -1,21 +1,14 @@
 <?php
 
-use Phalcon\Di\FactoryDefault;
-use Phalcon\Mvc\Micro;
-
 error_reporting(E_ALL);
 
 define('ROOT_PATH', dirname(__DIR__));
 define('APP_PATH', ROOT_PATH . '/app');
 define('IS_CLI', false);
 
-try {
+use Phalcon\Mvc\Micro;
 
-    /**
-     * The FactoryDefault Dependency Injector automatically registers the services that
-     * provide a full stack framework. These default services can be overidden with custom ones.
-     */
-    $di = new FactoryDefault();
+try {
 
     /**
      * Read vendor autoload
@@ -24,23 +17,7 @@ try {
         include ROOT_PATH . "/vendor/autoload.php";
     }
 
-    /**
-     * Get config service for use in inline setup below
-     */
-    $config = include APP_PATH . "/config/config.php";
-
-    /** 设置时区 */
-    ini_set('date.timezone', $config->timezone);
-
-    /**
-     * Include Autoloader
-     */
-    include APP_PATH . '/config/loader.php';
-
-    /**
-     * Include Services
-     */
-    include APP_PATH . '/config/services.php';
+    $di = require_once APP_PATH . '/bootstrap.php';
 
     /**
      * Starting the application
@@ -51,7 +28,6 @@ try {
     /**
      * Include Application
      */
-    // include APP_PATH . '/config/router.php';
     include APP_PATH . '/router.php';
 
     /**

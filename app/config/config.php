@@ -91,6 +91,7 @@ return new \Phalcon\Config(
         'application' => [
             'configDir' => APP_PATH . '/config/',
             'controllersDir' => APP_PATH . '/controllers/',
+            'libraryDir' => APP_PATH . '/library/',
             'modelsDir' => APP_PATH . '/models/',
             'routersDir' => APP_PATH . '/routers/',
             'viewsDir' => APP_PATH . '/views/',
@@ -177,17 +178,36 @@ return new \Phalcon\Config(
         | Services
         |--------------------------------------------------------------------------
         |
-        | The default setting is file.
-        | If you want to use redis ,you must set type=redis,
+        | 依赖注入服务
         |
         */
         'services' => [
-            'system/session.php',
-            'system/cache.php',
-            'system/log.php',
-            'system/error.php',
-            'system/cookies.php',
-            'system/crypt.php',
+            'common' => [
+                'config' => App\Services\ConfigService::class, // 系统配置
+                // 'app' => App\Services\App::class, // 自定义配置
+                // 'db' => App\Services\Db::class,
+                // 'modelsMetadata' => App\Services\ModelsMetadata::class,
+                // 'filter' => App\Services\Filter::class,
+                // 'cache' => App\Services\Cache::class,
+                // 'error' => App\Services\Error::class,
+                // 'crypt' => App\Services\Crypt::class,
+                // 'redis' => App\Services\Redis::class,
+                // 'mongo' => App\Services\Mongo::class,
+                // 'cookies' => App\Services\Cookies::class,
+                // 'session' => App\Services\Session::class,
+                // 'modelsManager' => App\Services\ModelsManager::class,
+                // 'logger' => App\Services\Logger::class,
+            ],
+            'cli' => [
+                // 'dispatcher' => App\Services\Cli\Dispatcher::class,
+                // 'console' => App\Services\Cli\Console::class,
+            ],
+            'http' => [
+                // 'router' => App\Services\Http\Router::class,
+                // 'url' => App\Services\Http\Url::class,
+                'view' => App\Services\Http\View::class,
+                // 'dispatcher' => App\Services\Http\Dispatcher::class,
+            ],
         ],
 
 

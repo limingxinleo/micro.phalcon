@@ -22,7 +22,7 @@ class View implements ServiceProviderInterface
          */
         $di->setShared('view', function () use ($config) {
 
-            $view = new \Phalcon\Mvc\View();
+            $view = new \Phalcon\Mvc\View\Simple();
 
             $view->setViewsDir($config->application->viewsDir);
 
