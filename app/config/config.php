@@ -92,6 +92,7 @@ return new \Phalcon\Config(
             'configDir' => APP_PATH . '/config/',
             'controllersDir' => APP_PATH . '/controllers/',
             'libraryDir' => APP_PATH . '/library/',
+            'listenersDir' => APP_PATH . '/listeners/',
             'modelsDir' => APP_PATH . '/models/',
             'routersDir' => APP_PATH . '/routers/',
             'viewsDir' => APP_PATH . '/views/',
@@ -185,7 +186,7 @@ return new \Phalcon\Config(
             'common' => [
                 'config' => App\Services\ConfigService::class, // 系统配置
                 // 'app' => App\Services\App::class, // 自定义配置
-                // 'db' => App\Services\Db::class,
+                'db' => App\Services\Db::class,
                 // 'modelsMetadata' => App\Services\ModelsMetadata::class,
                 // 'filter' => App\Services\Filter::class,
                 // 'cache' => App\Services\Cache::class,
@@ -204,7 +205,7 @@ return new \Phalcon\Config(
             ],
             'http' => [
                 // 'router' => App\Services\Http\Router::class,
-                // 'url' => App\Services\Http\Url::class,
+                'url' => App\Services\Http\Url::class,
                 'view' => App\Services\Http\View::class,
                 // 'dispatcher' => App\Services\Http\Dispatcher::class,
             ],

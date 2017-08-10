@@ -11,6 +11,7 @@ $loader
             'App' => APP_PATH,
             'App\Controllers' => $config->application->controllersDir,
             'App\Library' => $config->application->libraryDir,
+            'App\Listeners' => $config->application->listenersDir,
             'App\Models' => $config->application->modelsDir,
             'App\Tasks' => $config->application->tasksDir,
             'App\Traits' => $config->application->traitsDir,
